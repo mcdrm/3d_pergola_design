@@ -9,7 +9,11 @@ import { useSelector } from "react-redux";
 const Building = () => {
     const { scene, gl } = useThree();
     const buildingType = useSelector(state => state.buildingCtrl.buildingType);
+    const { width, length, height, pitch } = useSelector(state => state.buildingCtrl)
+
     const prevBuildingTypeRef = useRef(buildingType);
+    const prevWidth = useRef(width);
+    const prevLength = useRef(length);
     
     // Function to reset shadow maps - memoized with useCallback
     const resetShadows = useCallback(() => {
@@ -37,8 +41,10 @@ const Building = () => {
     
     useEffect(() => {
         // Only apply shadows when scene changes or building type changes
-        if (scene && (prevBuildingTypeRef.current !== buildingType)) {
+        if (scene && (prevBuildingTypeRef.current !== buildingType || prevWidth.current !== width || prevLength.current !== length)) {
             prevBuildingTypeRef.current = buildingType;
+            prevWidth.current = width;
+            prevLength.current = length;
             
             // Reset shadow maps immediately to clear old shadows
             resetShadows();
@@ -57,7 +63,7 @@ const Building = () => {
                 resetShadows();
             }, 100);
         }
-    }, [scene, buildingType, resetShadows]);
+    }, [scene, buildingType, width, length, height, pitch, resetShadows]);
     
     // Initial shadow setup
     useEffect(() => {
@@ -71,21 +77,8 @@ const Building = () => {
         }
     }, [scene]);
     
-    // const offset = 0.05
-    // const coverModel = new THREE.Shape();
-    // coverModel.moveTo(-(length / 2 + offset), 0);
-    // coverModel.lineTo(-(length / 2 + offset), height + length * pitch / 12);
-    // coverModel.lineTo((length / 2 + offset), height);
-    // coverModel.lineTo((length / 2 + offset), 0);
-    // coverModel.closePath();
-    
     return (
-        <group scale={0.5}>
-            {/* <mesh position={[width / 2 + offset, 0, 0]} rotation={[0, -Math.PI / 2, 0]}>
-                <extrudeGeometry args={[coverModel, { depth: width + offset * 2, bevelEnabled: false }]} />
-                <meshBasicMaterial color="#0066FF" opacity={0.3} transparent />
-            </mesh> */}
-            
+        <group scale={1}>
             <Pergola />
             <Surface />
         </group>
