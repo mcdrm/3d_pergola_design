@@ -1,8 +1,6 @@
-import { Environment, OrbitControls, AccumulativeShadows, RandomizedLight, Plane } from "@react-three/drei"
+import { Environment, OrbitControls } from "@react-three/drei"
 import { useSelector } from "react-redux";
 import { ConstProps } from "../../Utils/Constants";
-import { useThree } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
 
 const { height } = ConstProps;
 
@@ -11,26 +9,6 @@ const Env = () => {
 
     const isShowBg = useSelector(state => state.buildingCtrl.isShowBg)
     const isCamAutoRotate = useSelector(state => state.buildingCtrl.isCamAutoRotate)
-    const buildingType = useSelector(state => state.buildingCtrl.buildingType)
-    const { scene } = useThree()
-    
-    // Reference to the AccumulativeShadows component
-    const shadowsRef = useRef();
-    
-    // Reset shadows when building type changes
-    useEffect(() => {
-        if (shadowsRef.current) {
-            // This resets the shadow accumulation
-            shadowsRef.current.temporal = false;
-            
-            // We need to delay re-enabling temporal to ensure a clean reset
-            setTimeout(() => {
-                if (shadowsRef.current) {
-                    shadowsRef.current.temporal = true;
-                }
-            }, 100);
-        }
-    }, []);
     
     return (
         <>

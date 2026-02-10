@@ -1,4 +1,3 @@
-import * as THREE from 'three'
 import { useEffect, useRef, useCallback } from "react";
 import { useThree } from "@react-three/fiber"
 

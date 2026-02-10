@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("../src/Component/Style/controller.scss");
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
