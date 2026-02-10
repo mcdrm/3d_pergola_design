@@ -129,7 +129,7 @@ const ControlPanel = () => {
                     
                     <div className="mb-4">
                         <div className="flex justify-between items-center mb-1">
-                            <label htmlFor="width-slider" className="text-sm font-medium text-gray-700">Width</label>
+                            <label htmlFor="width-slider" className="text-sm font-medium text-gray-700">WIDTH</label>
                             <span className="text-xs text-blue-600 font-semibold">{dimensions.width}m</span>
                         </div>
                         <input 
@@ -151,7 +151,7 @@ const ControlPanel = () => {
                     
                     <div className="mb-4">
                         <div className="flex justify-between items-center mb-1">
-                            <label htmlFor="length-slider" className="text-sm font-medium text-gray-700">Length</label>
+                            <label htmlFor="length-slider" className="text-sm font-medium text-gray-700">LENGTH</label>
                             <span className="text-xs text-blue-600 font-semibold">{dimensions.length}m</span>
                         </div>
                         <input 
@@ -173,7 +173,7 @@ const ControlPanel = () => {
                     
                     <div className="mb-4">
                         <div className="flex justify-between items-center mb-1">
-                            <label htmlFor="height-slider" className="text-sm font-medium text-gray-700">Height</label>
+                            <label htmlFor="height-slider" className="text-sm font-medium text-gray-700">HEIGHT</label>
                             <span className="text-xs text-blue-600 font-semibold">{dimensions.height}m</span>
                         </div>
                         <input 
@@ -195,8 +195,8 @@ const ControlPanel = () => {
                     
                     <div>
                         <div className="flex justify-between items-center mb-1">
-                            <label htmlFor="pitch-slider" className="text-sm font-medium text-gray-700">Pitch</label>
-                            <span className="text-xs text-blue-600 font-semibold">{dimensions.pitch}°</span>
+                            <label htmlFor="pitch-slider" className="text-sm font-medium text-gray-700">PITCH</label>
+                            <span className="text-xs text-blue-600 font-semibold">{dimensions.pitch}</span>
                         </div>
                         <input 
                             id="pitch-slider"
@@ -210,8 +210,8 @@ const ControlPanel = () => {
                             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600" 
                         />
                         <div className="flex justify-between text-xs text-gray-500 mt-1">
-                            <span>1°</span>
-                            <span>6°</span>
+                            <span>1/12</span>
+                            <span>6/12</span>
                         </div>
                     </div>
                 </div>
