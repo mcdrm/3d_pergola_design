@@ -23,23 +23,25 @@ const Component = () => {
     return (
         <>
             { !isReadyForCanvas && <LoadingProgress /> }
-            { isReadyForCanvas && <ControlPanel /> }
-            <Canvas
-                shadows
-                dpr={[1, 1.5]}
-                // gl={{ antialias: false }}
-                camera={{ position: [5, 3, -10], fov: 30, near: 1, far: 100000 }}
-                style={{
-                    width: "100%",
-                    height: "100vh",
-                }}
-            >
-                {/* <axesHelper args={[50, 50, 50]} /> */}
-                <Suspense>
-                    <Env />
-                    { isReadyForCanvas && <Building /> }
-                </Suspense>
-            </Canvas>
+            { isReadyForCanvas && (
+                <>
+                    <ControlPanel />
+                    <Canvas
+                        shadows
+                        dpr={[1, 1.5]}
+                        camera={{ position: [5, 3, -10], fov: 30, near: 1, far: 100000 }}
+                        style={{
+                            width: "100%",
+                            height: "100vh",
+                        }}
+                    >
+                        <Suspense>
+                            <Env />
+                            <Building />
+                        </Suspense>
+                    </Canvas>
+                </>
+            ) }
         </>
     )
 }
